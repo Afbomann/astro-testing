@@ -6,4 +6,4 @@ Fetches posts/comments and displays them.
 
 The individual post pages uses url slugs to get the correct post.
 
-Deployment: ?
+Deployment: https://astro-testing-opal.vercel.app
