@@ -1,0 +1,21 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { usePost } from "../../lib/api";
+
+const {id} = Astro.params;
+
+if (!id) return Astro.redirect("/404");
+
+const post = await usePost(id);
+
+if (!post) return Astro.redirect("/404");
+---
+
+<Layout title={post.title} description={post.body}>
+    <div class="w-[600px] max-w-[85%] mx-auto mt-[15dvh]">
+        <p class="text-2xl lg:text-3xl">#{post.id}</p>
+        <p class="text-xl lg:text-2xl font-bold mt-[1dvh]">{post.title}</p>
+        <p class="text-base lg:text-lg mt-[2dvh]">{post.body}</p>
+        <p class="text-sm lg:text-base mt-[2dvh]">Created by: User {post.userId}</p>
+    </div>
+</Layout>

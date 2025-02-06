@@ -1,7 +1,16 @@
 ---
+import PostCard from "../components/PostCard.astro"
 import Layout from '../layouts/Layout.astro';
+import {usePosts} from "../lib/api.ts"
+
+const posts = await usePosts();
 ---
 
-<Layout>
-	<h2>Astro Testing</h2>
+<Layout title="Astro Testing" description='Astro Testing'>
+	<h2 class="text-2xl lg:text-3xl font-bold text-center mt-[5dvh]">Astro Testing</h2>
+
+	<h4 class="text-xl lg:text-2xl text-center mt-[3dvh]">Posts ({posts ? posts.length : 0})</h4>
+	{posts && posts.length > 0 ? <div class="w-[85%] mx-auto flex flex-wrap justify-center mt-[3dvh] mb-[5dvh] gap-[2dvh]">
+		{posts.map(post => <PostCard post={post}/>)}
+	</div>: <p class="text-lg lg:text-xl text-center mt-[3dvh]">Error while fetching posts {":("}</p>}
 </Layout>
