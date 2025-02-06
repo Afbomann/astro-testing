@@ -1,0 +1,15 @@
+---
+import type {TComment} from "../lib/types.ts"
+
+const {comment} = Astro.props;
+
+type Props = {
+    comment: TComment
+}
+---
+
+<div class="bg-slate-200 p-[13px] outline-1 outline-slate-300 rounded-lg flex flex-col gap-[1dvh]">
+    <p class="text-base lg:text-lg font-bold">{comment.name}</p>
+    <p class="text-sm lg:text-base mt-auto">{comment.body}</p>
+    <p class="text-sm lg:text-base mt-auto">- {comment.email}</p>
+</div>

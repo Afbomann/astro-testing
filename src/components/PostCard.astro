@@ -1,0 +1,14 @@
+---
+import type {TPost} from "../lib/types.ts"
+
+const {post} = Astro.props;
+
+type Props = {
+    post: TPost
+}
+---
+
+<a href={`/${post.id}`} class="bg-slate-200 p-[13px] outline-1 outline-slate-300 rounded-lg w-[300px] flex flex-col gap-[1dvh]">
+    <p class="text-base lg:text-lg font-bold">{post.title}</p>
+    <p class="text-sm lg:text-base mt-auto">#{post.id}</p>
+</a>
